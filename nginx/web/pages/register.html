@@ -54,21 +54,8 @@
 									<div class="col-sm-12">
 										<select name="type" id="type" class="selectpicker" data-width="100%">
 											<option value="1">US Middle/High School Student</option>
-											<option value="2">Middle/High School Teacher</option>
 											<option value="3">Non-US/Non-Student/Observer</option>
 										</select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-12 form-group">
-									<label class="col-sm-12"><small>Receive email notifications about future CTFs?</small></label>
-									<div class="col-sm-12">
-										<div class="btn-group" data-toggle="buttons">
-											<label class="btn btn-default active" id="notify_btn">
-												<input type="checkbox" autocomplete="off" checked name="notify" id="notify"><span id="notify_box" class="fa fa-fw fa-check-square"></span>&nbsp;Get notified about future CTFs
-											</label>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -89,15 +76,4 @@
 
 <script type="text/javascript">
 	$(".selectpicker").selectpicker();
-	var checkedClass = "fa fa-check-square";
-	var uncheckedClass = "fa fa-square";
-	$("#notify_btn").click(function() {
-		if($("#notify").is(":checked")) {
-			$("#notify_box").removeClass(checkedClass);
-			$("#notify_box").addClass(uncheckedClass);
-		} else {
-			$("#notify_box").removeClass(uncheckedClass);
-			$("#notify_box").addClass(checkedClass);
-		}
-	});
 </script>
