@@ -39,7 +39,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/" id="main_logo">{{ config.navbar['ctf_name'] }}</a>
+				<a class="navbar-brand" href="http://weebctf.easyctf.com" id="main_logo">{{ config.navbar['ctf_name'] }}</a>
 			</div>
 			<div id="main-navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
@@ -53,12 +53,7 @@
 					<div ng-show="config.navbar['competition_started']==true">
 					</div>
 					<li><a href="/chat">Chat</a></li>
-					<li class="dropdown" ng-show="config.navbar['competition']==true||config.navbar['admin']==true">
-						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Competition <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="/problems">Problems</a></li>
-						</ul>
-					</li>
+					<li ng-show="config.navbar['competition']==true||config.navbar['admin']==true"><a href="/problems">Problems</a></li>
 					<!-- <li ng-show="config.navbar['competition']!=true&&config.navbar['in_team']!=true"><a href="/findteam">Find Team</a></li> -->
 					<li class="dropdown" ng-show="config.navbar['admin']==true">
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>

@@ -14,8 +14,8 @@ app.config(function($compileProvider) {
 });
 app.config(function($routeProvider, $locationProvider) {
 	$routeProvider.when("/", {
-		templateUrl: "pages/home.html",
-		controller: "homeController"
+		templateUrl: "pages/scoreboard.html",
+		controller: "scoreboardController"
 	})
 	.when("/about", {
 		templateUrl: "pages/about.html",
@@ -78,6 +78,10 @@ app.config(function($routeProvider, $locationProvider) {
 	})
 	.when("/register", {
 		templateUrl: "pages/register.html",
+		controller: "mainController"
+	})
+	.when("/rules", {
+		templateUrl: "pages/rules.html",
 		controller: "mainController"
 	})
 	.when("/scoreboard", {
