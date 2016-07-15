@@ -395,7 +395,7 @@ class LoginTokens(db.Model):
 	active = db.Column(db.Boolean)
 	issued = db.Column(db.Integer)
 	expiry = db.Column(db.Integer)
-	ua = db.Column(db.String(128))
+	ua = db.Column(db.String(512))
 	ip = db.Column(db.String(16))
 	location = db.Column(db.String(128))
 
