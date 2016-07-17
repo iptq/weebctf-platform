@@ -376,12 +376,10 @@ __check_teamname = lambda teamname: get_team(teamname_lower=teamname.lower()).fi
 TeamSchema = Schema({
 	Required("teamname"): check(
 		([str, Length(min=4, max=32)], "Your teamname should be between 4 and 32 characters long."),
-		([utils.__check_ascii], "Please only use ASCII characters in your teamname."),
 		([__check_teamname], "This teamname is taken. Please choose a different one.")
 	),
 	Required("school"): check(
 		([str, Length(min=4, max=40)], "Your school name should be between 4 and 40 characters long. Use abbreviations if necessary."),
-		([utils.__check_ascii], "Please only use ASCII characters in your school name."),
 	),
 }, extra=True)
 
