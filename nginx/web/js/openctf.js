@@ -216,6 +216,8 @@ function display_message(containerId, alertType, message, callback) {
 	});
 };
 
+var pfp_message = false;
+
 app.controller("mainController", function($scope, $http, $location) {
 	$scope.config = { navbar: { } };
 	$scope.timestamp = Date.now();
@@ -225,6 +227,11 @@ app.controller("mainController", function($scope, $http, $location) {
 			$scope.config.navbar = result;
 			document.title = result["ctf_name"];
 			$scope.$emit("loginStatus");
+
+			if (result["propic_changed"] === false && !pfp_message) {
+				permanent_message("site-message", "warning", "<div class='container'>Looks like you haven't set a profile picture. <a href='/settings'>How about setting it to your favorite waifu?</a></div>");
+				pfp_message = true;
+			}
 
 			if (result["competition"] !== true && result["admin"] !== true) {
 				var path = $location.$$path.toLowerCase();
