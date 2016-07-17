@@ -224,10 +224,12 @@ def user_status():
 		"in_team": in_team(get_user()),
 		"username": session["username"] if logged_in else "",
 		"ctf_name": utils.get_ctf_name(),
-		"stylesheet": utils.get_config("stylesheet", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css")
+		"stylesheet": utils.get_config("stylesheet", "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"),
 	}
 	if logged_in:
-		result["has_team"] = in_team(get_user().first())
+		_user = get_user().first()
+		result["has_team"] = in_team(_user)
+		result["propic_changed"] = utils.check_identicon(_user.email, _user.uid)
 	if not utils.is_setup_complete():
 		result["redirect"] = "/setup"
 		result["setup"] = False
