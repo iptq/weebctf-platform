@@ -271,7 +271,7 @@ def team_info():
 	search = { }
 	teamname = utils.flat_multi(request.args).get("teamname")
 	if teamname:
-		search.update({ "teamname_lower": teamname.lower() })
+		search.update({ "teamname_lower": utils.escape_teamname(teamname) })
 	if logged_in:
 		_user = user.get_user().first()
 		if user.in_team(_user):
@@ -324,10 +324,10 @@ def team_edit():
 	with app.app_context():
 		update = {}
 		if params.get("new_teamname") is not None:
-			if get_team(teamname_lower=params["new_teamname"].lower()).first() is not None:
+			if get_team(teamname_lower=utils.escape_teamname(params["new_teamname"])).first() is not None:
 				raise WebException("This team name is taken!")
 			update["teamname"] = params["new_teamname"]
-			update["teamname_lower"] = params["new_teamname"].lower()
+			update["teamname_lower"] = utils.escape_teamname(params["new_teamname"])
 		if params.get("new_school") is not None:
 			update["school"] = params["new_school"]
 		_team.update_info(update)
@@ -371,7 +371,7 @@ def team_leave():
 # TEAM FUNCTIONS #
 ##################
 
-__check_teamname = lambda teamname: get_team(teamname_lower=teamname.lower()).first() is None
+__check_teamname = lambda teamname: get_team(teamname_lower=utils.escape_teamname(teamname)).first() is None
 
 TeamSchema = Schema({
 	Required("teamname"): check(
