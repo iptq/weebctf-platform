@@ -362,6 +362,7 @@ def team_leave():
 		else:
 			_team.remove_member(_user.uid)
 			db.session.add(Activity(_user.uid, 2, tid=_team.tid, pid=-1))
+		db.session.commit()
 		db.session.delete(_team)
 		db.session.commit()
 		db.session.close()
